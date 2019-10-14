@@ -1,4 +1,3 @@
-
 import random
 import string
 
@@ -8,9 +7,9 @@ max_len = 15
 
 #랜덤으로 단어를 생성하는 함수
 def generate_word(length):
-    #tmp = "~!@#$%^&*()_+|][}{-=?><,./`"
+    tmp = "~!@#$%^&*()_+|][}{-=?><,./`"
     result = ''
-    x = ''.join(random.sample(string.ascii_letters + string.digits, k=length))
+    x = ''.join(random.sample(string.ascii_letters + string.digits + tmp, k=length))
     return x
 
 def generate_population(size, min_len, max_len):
@@ -107,11 +106,12 @@ def create_children(parents, n_child):
  #돌연변이 생성
 def mutate_word(word):
     #랜덤으로 인덱스를 뽑는다
+    tmp = "~!@#$%^&*()_+|][}{-=?><,./`"
     idx = int(random.random() * len(word))
     if (idx == 0):
-        word = random.choice(string.ascii_letters + string.digits) + word[1:]
+        word = random.choice(string.ascii_letters + string.digits + tmp) + word[1:]
     else:
-        word = word[:idx] + random.choice(string.ascii_letters + string.digits) + word[idx+1:]
+        word = word[:idx] + random.choice(string.ascii_letters + string.digits + tmp) + word[idx+1:]
     #랜덤한 인덱스의 자리를 랜덤한걸로 집어넣어 돌연변이를 만들어 준다
     return word
 
@@ -147,14 +147,14 @@ for g in range(n_generation):
         break
     
     survivors = select_survivors(population_sorted=pop_sorted, best_sample=best_sample, lucky_few=lucky_few, password_len=pred_len)
-    
+   
     children = create_children(parents=survivors, n_child=n_child)
-
-    new_generation = mutate_population(population=children, chance_of_mutation=10)
     
+    new_generation = mutate_population(population=children, chance_of_mutation=10)
+
     pop = new_generation
-    #if g % 10 ==0:
-    #    print(pop)
+    if g % 50 ==0:
+        print(pop)
     print('===== %s번째 비밀번호 탐색 =====' % (g + 1))
     print(pop_sorted[0] , pop_avg, sep="   ")
     #print(random.choice(pop_sorted))
