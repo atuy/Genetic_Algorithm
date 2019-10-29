@@ -4,13 +4,14 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>76147f2c-0192-4835-b11f-0c4dd65ea1fa</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>Genetic_Algorithm.py</StartupFile>
+    <StartupFile>Genetic_Algorithm_Menu.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
     <Name>Genetic Algorithm</Name>
     <RootNamespace>Genetic Algorithm</RootNamespace>
+    <IsWindowsApplication>False</IsWindowsApplication>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
